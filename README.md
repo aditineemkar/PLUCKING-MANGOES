@@ -1,2 +1,0 @@
-# MatterJSBoilerPlate
-MatterJSBoilerPlate
