@@ -1,19 +1,23 @@
-class Stone {
-    constructor(x, y, width, height) {
-      
-      var options = {isStatic: true};
-      this.body = Bodies.rectangle(x, y, width, height, options);
-      this.width = width;
-      this.height = height;
-      this.image = loadImage('stone.png');
-      World.add(world, this.body);
-
-    }
-
-    display(){
-        var pos = this.body.position;
-        imageMode(CENTER);
-        image(this.image, pos.x, pos.y, this.width, this.height);
-    }
-
-  };
+class Stone{
+  constructor(x,y,r) {
+      var options = {
+          isStatic: false,
+          restitution: 0,
+          frcition: 1,
+          density: 1.2
+      }
+      this.x = x;
+      this.y = y;
+      this.r = r;
+      this.body = Bodies.circle(this.x,this.y,(this.r)/3,options);
+      this.image = loadImage("stone.png");
+      World.add(world,this.body);
+  }
+  display(){
+      var pos =this.body.position;
+      translate(pos.x, pos.y);
+      rectMode(CENTER);
+      imageMode(CENTER); 
+      image(this.image, 0,0,this.r, this.r)
+  }
+}
