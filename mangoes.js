@@ -1,27 +1,18 @@
-class Mangoes{
-    constructor(x,y,r){
-        var options = {
-            'restitution':0.5,
-            'friction':0.3,
-            'density':1.0,
-            isStatic:true
-        }
-    this.x = x;
-    this.y = y;
-    this.r = r;
-    this.body = Bodies.circle(this.x,this.y,this.r,options);
-    this.image = loadImage("mango.png");
-    World.add(world,this.body)
+class Mango {
+    constructor(x, y, radius) {
+      
+      var options = {isStatic: true};
+      this.body = Bodies.circle(x, y, radius, options);
+      
+      this.image = loadImage('mango.png');
+      World.add(world, this.body);
+
     }
+
     display(){
-        var pos =this.body.position;
-        push();
-        translate(pos.x,pos.y);
-        strokeWeight(4);
-        stroke("green");
-        fill("yellow");
+        var pos = this.body.position;
         imageMode(CENTER);
-        image(this.image, 0,0,this.r*2, this.r*2)
-        pop();
-      }
-}
+        image(this.image, pos.x, pos.y, this.width, this.height);
+    }
+
+  };
