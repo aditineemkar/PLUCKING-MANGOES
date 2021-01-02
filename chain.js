@@ -1,25 +1,30 @@
-class Line {
-    constructor(body1, body2){
-        var options = {
-            bodyA : body1,
-            bodyB : body2,
-            length : 100,
-            stiffness : 0
+class SlingShot{
+    constructor(bodyA, pointB) {
+      var options = {
+        bodyA: bodyA,
+        pointB: pointB,
+        stiffness: 0.004,
+        lenght: 50
+      } 
+      this.pointB = pointB;
+      this.sling = Constraint.create(options);
+      World.add(world,this.sling);
+      }
+      display(){
+        if(this.sling.bodyA){
+        strokeWeight(4);
+        var pointA = this.sling.bodyA.position;
+        var pointB = this.pointB;
+        line(pointA.x, pointA.y, pointB.x, pointB.y); 
         }
+      }
 
-        this.body = Matter.Constraint.create(options);
+      fly(){
+        this.sling.bodyA = null;
+      }
+      attach(body){
+        this.sling.bodyA = body;
 
-        World.add(world, this.body);
-    }
+      }
 
-    display() {
-
-        var pointA = this.body.bodyA.position;
-        var pointB = this.body.bodyB.position;
-        push ();
-        strokeWeight(5);
-        stroke("black");
-        line(pointA.x, pointA.y, pointB.x, pointB.y);
-        pop ();
-    }
 }
